@@ -11,10 +11,10 @@ class ApiCalendar {
   onLoadCallback: any = null;
   calendar: string = "primary";
   onLoginCallback: any = null;
-
-  constructor(public config: ConfigApiCalendar, public hintEmail: string = '') {
+  hintEmail: string = "ho.sy.ky@spectos.com";
+  constructor(public config: ConfigApiCalendar) {
     try {
-      console.log('constructor>>>', hintEmail)
+      // console.log('constructor>>>', hintEmail)
       this.initGapiClient = this.initGapiClient.bind(this);
       this.handleSignoutClick = this.handleSignoutClick.bind(this);
       this.handleAuthClick = this.handleAuthClick.bind(this);

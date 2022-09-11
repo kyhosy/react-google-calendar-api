@@ -39,15 +39,14 @@ module.exports = __toCommonJS(ApiCalendar_exports);
 var scriptSrcGoogle = "https://accounts.google.com/gsi/client";
 var scriptSrcGapi = "https://apis.google.com/js/api.js";
 var ApiCalendar = class {
-  constructor(config, hintEmail = "") {
+  constructor(config) {
     this.config = config;
-    this.hintEmail = hintEmail;
     this.tokenClient = null;
     this.onLoadCallback = null;
     this.calendar = "primary";
     this.onLoginCallback = null;
+    this.hintEmail = "ho.sy.ky@spectos.com";
     try {
-      console.log("constructor>>>", hintEmail);
       this.initGapiClient = this.initGapiClient.bind(this);
       this.handleSignoutClick = this.handleSignoutClick.bind(this);
       this.handleAuthClick = this.handleAuthClick.bind(this);
