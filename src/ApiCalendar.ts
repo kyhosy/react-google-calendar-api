@@ -85,7 +85,7 @@ class ApiCalendar {
         hint:this.hintEmail,
         // tslint:disable-next-line:typedef
         callback: (tokenResponse): void => {
-          console.log('tokenClient>>>callback<<<',this.hintEmail, tokenResponse)
+          console.log('tokenClient>>>callback<<<xxxx',this.hintEmail, tokenResponse)
           // gapi.client.au
           // google.accounts.oauth2.cu
           if(this.onLoginCallback){

@@ -103,7 +103,7 @@ var ApiCalendar = class {
         prompt: "",
         hint: this.hintEmail,
         callback: (tokenResponse) => {
-          console.log("tokenClient>>>callback<<<", this.hintEmail, tokenResponse);
+          console.log("tokenClient>>>callback<<<xxxx", this.hintEmail, tokenResponse);
           if (this.onLoginCallback) {
             this.onLoginCallback(tokenResponse);
           }
