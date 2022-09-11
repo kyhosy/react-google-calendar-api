@@ -61,7 +61,6 @@ var ApiCalendar = class {
       this.getEvent = this.getEvent.bind(this);
       this.handleClientLoad();
       this.getCurrentUser = this.getCurrentUser.bind(this);
-      this.hintEmail = hintEmail;
     } catch (e) {
       console.log(e);
     }
@@ -115,6 +114,7 @@ var ApiCalendar = class {
   getCurrentUser() {
     var _a, _b, _c;
     try {
+      console.log("getCurrentUser>>>");
       return (_c = (_b = (_a = gapi == null ? void 0 : gapi.auth2) == null ? void 0 : _a.getAuthInstance()) == null ? void 0 : _b.currentUser) == null ? void 0 : _c.get();
     } catch (e) {
       return null;
