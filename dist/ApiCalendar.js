@@ -44,6 +44,7 @@ var ApiCalendar = class {
     this.tokenClient = null;
     this.onLoadCallback = null;
     this.calendar = "primary";
+    this.onLoginCallback = null;
     try {
       this.initGapiClient = this.initGapiClient.bind(this);
       this.handleSignoutClick = this.handleSignoutClick.bind(this);
@@ -97,7 +98,11 @@ var ApiCalendar = class {
         client_id: this.config.clientId,
         scope: this.config.scope,
         prompt: "",
-        callback: () => {
+        callback: (tokenResponse) => {
+          console.log("tokenClient>>>callback<<<", tokenResponse);
+          if (this.onLoginCallback) {
+            this.onLoginCallback(tokenResponse);
+          }
         }
       });
     };
