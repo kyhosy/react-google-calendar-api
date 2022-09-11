@@ -14,9 +14,11 @@ class ApiCalendar {
 
   constructor(public config: ConfigApiCalendar, public hintEmail: string = '') {
     try {
+      console.log('constructor>>>', hintEmail)
       this.initGapiClient = this.initGapiClient.bind(this);
       this.handleSignoutClick = this.handleSignoutClick.bind(this);
       this.handleAuthClick = this.handleAuthClick.bind(this);
+      this.getCurrentUser = this.getCurrentUser.bind(this);
       this.createEvent = this.createEvent.bind(this);
       this.listUpcomingEvents = this.listUpcomingEvents.bind(this);
       this.listEvents = this.listEvents.bind(this);
@@ -27,7 +29,6 @@ class ApiCalendar {
       this.deleteEvent = this.deleteEvent.bind(this);
       this.getEvent = this.getEvent.bind(this);
       this.handleClientLoad();
-      this.getCurrentUser = this.getCurrentUser.bind(this);
       // this.hintEmail = hintEmail;
     } catch (e) {
       console.log(e);

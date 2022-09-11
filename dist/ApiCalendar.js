@@ -47,9 +47,11 @@ var ApiCalendar = class {
     this.calendar = "primary";
     this.onLoginCallback = null;
     try {
+      console.log("constructor>>>", hintEmail);
       this.initGapiClient = this.initGapiClient.bind(this);
       this.handleSignoutClick = this.handleSignoutClick.bind(this);
       this.handleAuthClick = this.handleAuthClick.bind(this);
+      this.getCurrentUser = this.getCurrentUser.bind(this);
       this.createEvent = this.createEvent.bind(this);
       this.listUpcomingEvents = this.listUpcomingEvents.bind(this);
       this.listEvents = this.listEvents.bind(this);
@@ -60,7 +62,6 @@ var ApiCalendar = class {
       this.deleteEvent = this.deleteEvent.bind(this);
       this.getEvent = this.getEvent.bind(this);
       this.handleClientLoad();
-      this.getCurrentUser = this.getCurrentUser.bind(this);
     } catch (e) {
       console.log(e);
     }
