@@ -39,8 +39,9 @@ module.exports = __toCommonJS(ApiCalendar_exports);
 var scriptSrcGoogle = "https://accounts.google.com/gsi/client";
 var scriptSrcGapi = "https://apis.google.com/js/api.js";
 var ApiCalendar = class {
-  constructor(config) {
+  constructor(config, hintEmail = "") {
     this.config = config;
+    this.hintEmail = hintEmail;
     this.tokenClient = null;
     this.onLoadCallback = null;
     this.calendar = "primary";
@@ -59,6 +60,7 @@ var ApiCalendar = class {
       this.deleteEvent = this.deleteEvent.bind(this);
       this.getEvent = this.getEvent.bind(this);
       this.handleClientLoad();
+      this.hintEmail = hintEmail;
     } catch (e) {
       console.log(e);
     }
@@ -98,6 +100,7 @@ var ApiCalendar = class {
         client_id: this.config.clientId,
         scope: this.config.scope,
         prompt: "",
+        hint: this.hintEmail,
         callback: (tokenResponse) => {
           console.log("tokenClient>>>callback<<<", tokenResponse);
           if (this.onLoginCallback) {
@@ -110,10 +113,14 @@ var ApiCalendar = class {
   handleAuthClick() {
     if (gapi && this.tokenClient) {
       if (gapi.client.getToken() === null) {
-        this.tokenClient.requestAccessToken({ prompt: "consent" });
+        this.tokenClient.requestAccessToken({
+          prompt: "consent",
+          hint: this.hintEmail
+        });
       } else {
         this.tokenClient.requestAccessToken({
-          prompt: ""
+          prompt: "",
+          hint: this.hintEmail
         });
       }
     } else {

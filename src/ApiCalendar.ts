@@ -12,7 +12,7 @@ class ApiCalendar {
   calendar: string = "primary";
   onLoginCallback: any = null;
 
-  constructor(public config: ConfigApiCalendar) {
+  constructor(public config: ConfigApiCalendar, public hintEmail: string = '') {
     try {
       this.initGapiClient = this.initGapiClient.bind(this);
       this.handleSignoutClick = this.handleSignoutClick.bind(this);
@@ -27,6 +27,7 @@ class ApiCalendar {
       this.deleteEvent = this.deleteEvent.bind(this);
       this.getEvent = this.getEvent.bind(this);
       this.handleClientLoad();
+      this.hintEmail = hintEmail;
     } catch (e) {
       console.log(e);
     }
@@ -79,6 +80,7 @@ class ApiCalendar {
         client_id: this.config.clientId,
         scope: this.config.scope,
         prompt: "",
+        hint:this.hintEmail,
         // tslint:disable-next-line:typedef
         callback: (tokenResponse): void => {
           console.log('tokenClient>>>callback<<<', tokenResponse)
@@ -96,10 +98,14 @@ class ApiCalendar {
   public handleAuthClick(): void {
     if (gapi && this.tokenClient) {
       if (gapi.client.getToken() === null) {
-        this.tokenClient.requestAccessToken({ prompt: "consent"});
+        this.tokenClient.requestAccessToken({
+          prompt: "consent",
+          hint:this.hintEmail,
+        });
       } else {
         this.tokenClient.requestAccessToken({
           prompt: "",
+          hint:this.hintEmail,
         });
       }
     } else {
