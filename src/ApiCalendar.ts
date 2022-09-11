@@ -27,6 +27,7 @@ class ApiCalendar {
       this.deleteEvent = this.deleteEvent.bind(this);
       this.getEvent = this.getEvent.bind(this);
       this.handleClientLoad();
+      this.getCurrentUser = this.getCurrentUser.bind(this);
       this.hintEmail = hintEmail;
     } catch (e) {
       console.log(e);
@@ -76,6 +77,7 @@ class ApiCalendar {
       gapi.load("client", this.initGapiClient);
     };
     scriptGoogle.onload = async (): Promise<void> => {
+      console.log('scriptGoogle.onload>>>', this.hintEmail)
       this.tokenClient = await google.accounts.oauth2.initTokenClient({
         client_id: this.config.clientId,
         scope: this.config.scope,
@@ -112,6 +114,7 @@ class ApiCalendar {
    */
   public handleAuthClick(): void {
     if (gapi && this.tokenClient) {
+      console.log('handleAuthClick>>>', this.hintEmail)
       if (gapi.client.getToken() === null) {
         this.tokenClient.requestAccessToken({
           prompt: "consent",
