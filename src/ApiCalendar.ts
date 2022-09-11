@@ -96,9 +96,7 @@ class ApiCalendar {
   public handleAuthClick(): void {
     if (gapi && this.tokenClient) {
       if (gapi.client.getToken() === null) {
-        this.tokenClient.requestAccessToken({ prompt: "consent" , callback: () => {
-
-          }});
+        this.tokenClient.requestAccessToken({ prompt: "consent"});
       } else {
         this.tokenClient.requestAccessToken({
           prompt: "",
