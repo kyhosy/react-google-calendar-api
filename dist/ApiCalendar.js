@@ -103,7 +103,7 @@ var ApiCalendar = class {
         prompt: "",
         hint: this.hintEmail,
         callback: (tokenResponse) => {
-          console.log("tokenClient>>>callback<<<", tokenResponse);
+          console.log("tokenClient>>>callback<<<", this.hintEmail, tokenResponse);
           if (this.onLoginCallback) {
             this.onLoginCallback(tokenResponse);
           }
@@ -121,8 +121,8 @@ var ApiCalendar = class {
     }
   }
   handleAuthClick() {
+    console.log("handleAuthClick>>>", this.hintEmail);
     if (gapi && this.tokenClient) {
-      console.log("handleAuthClick>>>", this.hintEmail);
       if (gapi.client.getToken() === null) {
         this.tokenClient.requestAccessToken({
           prompt: "consent",

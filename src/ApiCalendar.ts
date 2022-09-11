@@ -85,7 +85,7 @@ class ApiCalendar {
         hint:this.hintEmail,
         // tslint:disable-next-line:typedef
         callback: (tokenResponse): void => {
-          console.log('tokenClient>>>callback<<<', tokenResponse)
+          console.log('tokenClient>>>callback<<<',this.hintEmail, tokenResponse)
           // gapi.client.au
           // google.accounts.oauth2.cu
           if(this.onLoginCallback){
@@ -114,8 +114,9 @@ class ApiCalendar {
    * Sign in Google user account
    */
   public handleAuthClick(): void {
+    console.log('handleAuthClick>>>', this.hintEmail)
+
     if (gapi && this.tokenClient) {
-      console.log('handleAuthClick>>>', this.hintEmail)
       if (gapi.client.getToken() === null) {
         this.tokenClient.requestAccessToken({
           prompt: "consent",
