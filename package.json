@@ -41,6 +41,7 @@
   "homepage": "https://github.com/Kubessandra/react-google-calendar-api#readme",
   "devDependencies": {
     "@types/gapi": "^0.0.42",
+    "@types/gapi.auth2": "^0.0.56",
     "@types/gapi.calendar": "^3.0.6",
     "@types/google.accounts": "^0.0.1",
     "@types/jest": "^27.5.1",

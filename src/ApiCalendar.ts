@@ -2,6 +2,7 @@ import {
   ConfigApiCalendar,
   TimeCalendarType,
 } from './type';
+import GoogleUser = gapi.auth2.GoogleUser;
 
 const scriptSrcGoogle = "https://accounts.google.com/gsi/client"
 const scriptSrcGapi = "https://apis.google.com/js/api.js"
@@ -84,6 +85,8 @@ class ApiCalendar {
         // tslint:disable-next-line:typedef
         callback: (tokenResponse): void => {
           console.log('tokenClient>>>callback<<<', tokenResponse)
+          // gapi.client.au
+          // google.accounts.oauth2.cu
           if(this.onLoginCallback){
             this.onLoginCallback(tokenResponse)
           }
@@ -342,6 +345,13 @@ class ApiCalendar {
       console.error("Error: gapi is not loaded use onLoad before please.");
       return null;
     }
+  }
+
+  /**
+   *
+   */
+  public getCurrentUser():GoogleUser{
+    return gapi.auth2.getAuthInstance().currentUser.get()
   }
 }
 
