@@ -10,6 +10,7 @@ class ApiCalendar {
   tokenClient: google.accounts.oauth2.TokenClient | null = null;
   onLoadCallback: any = null;
   calendar: string = "primary";
+  onLoginCallback: any = null;
 
   constructor(public config: ConfigApiCalendar) {
     try {
@@ -78,7 +79,13 @@ class ApiCalendar {
         client_id: this.config.clientId,
         scope: this.config.scope,
         prompt: "",
-        callback: (): void => {},
+        // tslint:disable-next-line:typedef
+        callback: (tokenResponse): void => {
+          console.log('tokenClient>>>callback<<<', tokenResponse)
+          if(this.onLoginCallback){
+            this.onLoginCallback(tokenResponse)
+          }
+        },
       });
     };
   }
@@ -89,7 +96,9 @@ class ApiCalendar {
   public handleAuthClick(): void {
     if (gapi && this.tokenClient) {
       if (gapi.client.getToken() === null) {
-        this.tokenClient.requestAccessToken({ prompt: "consent" });
+        this.tokenClient.requestAccessToken({ prompt: "consent" , callback: () => {
+
+          }});
       } else {
         this.tokenClient.requestAccessToken({
           prompt: "",
