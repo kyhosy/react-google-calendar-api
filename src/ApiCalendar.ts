@@ -128,7 +128,7 @@ class ApiCalendar {
         });
       }
     } else {
-      console.error("Error: this.gapi not loaded");
+      console.error("Error: this.gapi not loaded", this.hintEmail);
       new Error("Error: this.gapi not loaded");
     }
   }
