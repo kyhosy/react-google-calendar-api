@@ -254,6 +254,9 @@ var ApiCalendar = class {
       return null;
     }
   }
+  getCurrentUser() {
+    return gapi.auth2.getAuthInstance().currentUser.get();
+  }
 };
 var ApiCalendar_default = ApiCalendar;
 // Annotate the CommonJS export names for ESM import in node:

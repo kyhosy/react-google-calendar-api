@@ -2,7 +2,6 @@ import {
   ConfigApiCalendar,
   TimeCalendarType,
 } from './type';
-import GoogleUser = gapi.auth2.GoogleUser;
 
 const scriptSrcGoogle = "https://accounts.google.com/gsi/client"
 const scriptSrcGapi = "https://apis.google.com/js/api.js"
@@ -348,9 +347,9 @@ class ApiCalendar {
   }
 
   /**
-   *
+   * Get Current User
    */
-  public getCurrentUser():GoogleUser{
+  public getCurrentUser(): any {
     return gapi.auth2.getAuthInstance().currentUser.get()
   }
 }

@@ -116,6 +116,10 @@ declare class ApiCalendar {
      * @returns {any}
      */
     createCalendar(summary: string): any;
+    /**
+     * Get Current User
+     */
+    getCurrentUser(): any;
 }
 
 export { ApiCalendar as default };
