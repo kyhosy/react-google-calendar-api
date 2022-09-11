@@ -350,7 +350,12 @@ class ApiCalendar {
    * Get Current User
    */
   public getCurrentUser(): any {
-    return gapi.auth2.getAuthInstance().currentUser.get()
+    try {
+      return gapi?.auth2?.getAuthInstance()?.currentUser?.get()
+    }
+    catch (e) {
+      return null
+    }
   }
 }
 

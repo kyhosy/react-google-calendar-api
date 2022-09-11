@@ -255,7 +255,12 @@ var ApiCalendar = class {
     }
   }
   getCurrentUser() {
-    return gapi.auth2.getAuthInstance().currentUser.get();
+    var _a, _b, _c;
+    try {
+      return (_c = (_b = (_a = gapi == null ? void 0 : gapi.auth2) == null ? void 0 : _a.getAuthInstance()) == null ? void 0 : _b.currentUser) == null ? void 0 : _c.get();
+    } catch (e) {
+      return null;
+    }
   }
 };
 var ApiCalendar_default = ApiCalendar;
