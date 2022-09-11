@@ -29,10 +29,6 @@ declare class ApiCalendar {
      */
     private handleClientLoad;
     /**
-     * Get Current User
-     */
-    getCurrentUser(): any;
-    /**
      * Sign in Google user account
      */
     handleAuthClick(): void;

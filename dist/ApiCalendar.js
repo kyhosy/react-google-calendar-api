@@ -51,7 +51,6 @@ var ApiCalendar = class {
       this.initGapiClient = this.initGapiClient.bind(this);
       this.handleSignoutClick = this.handleSignoutClick.bind(this);
       this.handleAuthClick = this.handleAuthClick.bind(this);
-      this.getCurrentUser = this.getCurrentUser.bind(this);
       this.createEvent = this.createEvent.bind(this);
       this.listUpcomingEvents = this.listUpcomingEvents.bind(this);
       this.listEvents = this.listEvents.bind(this);
@@ -111,15 +110,6 @@ var ApiCalendar = class {
         }
       });
     };
-  }
-  getCurrentUser() {
-    var _a, _b, _c;
-    try {
-      console.log("getCurrentUser>>>");
-      return (_c = (_b = (_a = gapi == null ? void 0 : gapi.auth2) == null ? void 0 : _a.getAuthInstance()) == null ? void 0 : _b.currentUser) == null ? void 0 : _c.get();
-    } catch (e) {
-      return null;
-    }
   }
   handleAuthClick() {
     console.log("handleAuthClick>>>", this.hintEmail);

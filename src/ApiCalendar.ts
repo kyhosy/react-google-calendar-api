@@ -18,7 +18,7 @@ class ApiCalendar {
       this.initGapiClient = this.initGapiClient.bind(this);
       this.handleSignoutClick = this.handleSignoutClick.bind(this);
       this.handleAuthClick = this.handleAuthClick.bind(this);
-      this.getCurrentUser = this.getCurrentUser.bind(this);
+      // this.getCurrentUser = this.getCurrentUser.bind(this);
       this.createEvent = this.createEvent.bind(this);
       this.listUpcomingEvents = this.listUpcomingEvents.bind(this);
       this.listEvents = this.listEvents.bind(this);
@@ -87,8 +87,6 @@ class ApiCalendar {
         // tslint:disable-next-line:typedef
         callback: (tokenResponse): void => {
           console.log('tokenClient>>>callback<<<xxxx',this.hintEmail, tokenResponse)
-          // gapi.client.au
-          // google.accounts.oauth2.cu
           if(this.onLoginCallback){
             this.onLoginCallback(tokenResponse)
           }
@@ -98,18 +96,18 @@ class ApiCalendar {
   }
 
 
-  /**
-   * Get Current User
-   */
-  public getCurrentUser(): any {
-    try {
-      console.log('getCurrentUser>>>')
-      return gapi?.auth2?.getAuthInstance()?.currentUser?.get()
-    }
-    catch (e) {
-      return null
-    }
-  }
+  // /**
+  //  * Get Current User
+  //  */
+  // public getCurrentUser(): any {
+  //   try {
+  //     console.log('getCurrentUser>>>')
+  //     return gapi?.auth2?.getAuthInstance()?.currentUser?.get()
+  //   }
+  //   catch (e) {
+  //     return null
+  //   }
+  // }
 
   /**
    * Sign in Google user account
