@@ -110,6 +110,14 @@ var ApiCalendar = class {
       });
     };
   }
+  getCurrentUser() {
+    var _a, _b, _c;
+    try {
+      return (_c = (_b = (_a = gapi == null ? void 0 : gapi.auth2) == null ? void 0 : _a.getAuthInstance()) == null ? void 0 : _b.currentUser) == null ? void 0 : _c.get();
+    } catch (e) {
+      return null;
+    }
+  }
   handleAuthClick() {
     if (gapi && this.tokenClient) {
       if (gapi.client.getToken() === null) {
@@ -251,14 +259,6 @@ var ApiCalendar = class {
       return gapi.client.calendar.calendars.insert({ summary });
     } else {
       console.error("Error: gapi is not loaded use onLoad before please.");
-      return null;
-    }
-  }
-  getCurrentUser() {
-    var _a, _b, _c;
-    try {
-      return (_c = (_b = (_a = gapi == null ? void 0 : gapi.auth2) == null ? void 0 : _a.getAuthInstance()) == null ? void 0 : _b.currentUser) == null ? void 0 : _c.get();
-    } catch (e) {
       return null;
     }
   }

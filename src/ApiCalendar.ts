@@ -94,6 +94,19 @@ class ApiCalendar {
     };
   }
 
+
+  /**
+   * Get Current User
+   */
+  public getCurrentUser(): any {
+    try {
+      return gapi?.auth2?.getAuthInstance()?.currentUser?.get()
+    }
+    catch (e) {
+      return null
+    }
+  }
+
   /**
    * Sign in Google user account
    */
@@ -346,17 +359,6 @@ class ApiCalendar {
     }
   }
 
-  /**
-   * Get Current User
-   */
-  public getCurrentUser(): any {
-    try {
-      return gapi?.auth2?.getAuthInstance()?.currentUser?.get()
-    }
-    catch (e) {
-      return null
-    }
-  }
 }
 
 export default ApiCalendar;
