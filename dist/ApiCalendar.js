@@ -39,14 +39,15 @@ module.exports = __toCommonJS(ApiCalendar_exports);
 var scriptSrcGoogle = "https://accounts.google.com/gsi/client";
 var scriptSrcGapi = "https://apis.google.com/js/api.js";
 var ApiCalendar = class {
-  constructor(config) {
+  constructor(config, hintEmail = "") {
     this.config = config;
+    this.hintEmail = hintEmail;
     this.tokenClient = null;
     this.onLoadCallback = null;
     this.calendar = "primary";
     this.onLoginCallback = null;
-    this.hintEmail = "ho.sy.ky@spectos.com";
     try {
+      console.log("constructor>>>", hintEmail);
       this.initGapiClient = this.initGapiClient.bind(this);
       this.handleSignoutClick = this.handleSignoutClick.bind(this);
       this.handleAuthClick = this.handleAuthClick.bind(this);
@@ -109,6 +110,15 @@ var ApiCalendar = class {
         }
       });
     };
+  }
+  getCurrentUser() {
+    var _a, _b, _c;
+    try {
+      console.log("getCurrentUser>>>");
+      return (_c = (_b = (_a = gapi == null ? void 0 : gapi.auth2) == null ? void 0 : _a.getAuthInstance()) == null ? void 0 : _b.currentUser) == null ? void 0 : _c.get();
+    } catch (e) {
+      return null;
+    }
   }
   handleAuthClick() {
     console.log("handleAuthClick>>>", this.hintEmail);

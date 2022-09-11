@@ -12,12 +12,12 @@ interface TimeCalendarType {
 
 declare class ApiCalendar {
     config: ConfigApiCalendar;
+    hintEmail: string;
     tokenClient: google.accounts.oauth2.TokenClient | null;
     onLoadCallback: any;
     calendar: string;
     onLoginCallback: any;
-    hintEmail: string;
-    constructor(config: ConfigApiCalendar);
+    constructor(config: ConfigApiCalendar, hintEmail?: string);
     get sign(): boolean;
     /**
      * Auth to the google Api.
@@ -28,6 +28,10 @@ declare class ApiCalendar {
      * And create gapi in global
      */
     private handleClientLoad;
+    /**
+     * Get Current User
+     */
+    getCurrentUser(): any;
     /**
      * Sign in Google user account
      */

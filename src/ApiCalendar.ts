@@ -11,10 +11,9 @@ class ApiCalendar {
   onLoadCallback: any = null;
   calendar: string = "primary";
   onLoginCallback: any = null;
-  hintEmail: string = "ho.sy.ky@spectos.com";
-  constructor(public config: ConfigApiCalendar) {
+  constructor(public config: ConfigApiCalendar, public hintEmail: string = '') {
     try {
-      // console.log('constructor>>>', hintEmail)
+      console.log('constructor>>>', hintEmail)
       this.initGapiClient = this.initGapiClient.bind(this);
       this.handleSignoutClick = this.handleSignoutClick.bind(this);
       this.handleAuthClick = this.handleAuthClick.bind(this);
@@ -96,18 +95,18 @@ class ApiCalendar {
   }
 
 
-  // /**
-  //  * Get Current User
-  //  */
-  // public getCurrentUser(): any {
-  //   try {
-  //     console.log('getCurrentUser>>>')
-  //     return gapi?.auth2?.getAuthInstance()?.currentUser?.get()
-  //   }
-  //   catch (e) {
-  //     return null
-  //   }
-  // }
+  /**
+   * Get Current User
+   */
+  public getCurrentUser(): any {
+    try {
+      console.log('getCurrentUser>>>')
+      return gapi?.auth2?.getAuthInstance()?.currentUser?.get()
+    }
+    catch (e) {
+      return null
+    }
+  }
 
   /**
    * Sign in Google user account
